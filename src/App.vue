@@ -1,15 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Timer time_to_complete="30"/>
+  <Message inputMsg = 'test'/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Timer from './components/Timer.vue'
+import Message from './components/Message.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Timer,
+    Message
   }
 }
 </script>
