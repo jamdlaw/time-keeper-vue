@@ -36,6 +36,10 @@ export default {
     reset() {
       this.elapsedTime = 0;
     }
+  },
+
+  mounted(){
+    document.title = this.timer;
   }
 };
 </script>
