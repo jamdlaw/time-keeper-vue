@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { nextTick } from 'vue'
+
 export default {
   name: "App",
   data() {
@@ -25,10 +27,13 @@ export default {
     }
   },
   methods: {
-    start() {
+   async start() {
       this.timer = setInterval(() => {
         this.elapsedTime += 1000;
       }, 1000);
+       await nextTick()
+      // DOM is now updated
+      document.title = this.formattedElapsedTime;
     },
     stop() {
       clearInterval(this.timer);
@@ -36,10 +41,10 @@ export default {
     reset() {
       this.elapsedTime = 0;
     }
-  },
-
-  mounted(){
-    document.title = this.timer;
   }
+
+  //updated() {
+   //   console.log('updated!')
+   // }
 };
 </script>
