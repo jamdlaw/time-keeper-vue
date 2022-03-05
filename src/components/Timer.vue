@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  <div class="container" style="max-width: 600px">
     <div class="d-flex mt-5">
       <input
         type="text"
@@ -7,16 +8,26 @@
         placeholder="Enter task"
         class="w-100 form-control"
       />
-    <button @click="start">Start</button>
-    <button @click="stop">Stop</button>
-    <button @click="reset">Reset</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="start">Start</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="stop">Stop</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="reset">Reset</button>
     </div>
 
     <p>{{formattedElapsedTime}}</p>
+  <table class="table table-bordered mt-5">
+    <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col" style="width: 120px">Duration</th>
+        </tr>
+      </thead>
+    <tr v-for="(task, index) in tasks" :key="index">
+      <td>{{ task.name }}</td> 
+      <td>{{task.duration}}</td>
+    </tr>
+    </table>
+    </div>
   </div>
-  <ul>
-    <li v-for="(task, index) in tasks" :key="index">{{ task.name }} | {{task.duration}}</li>
-  </ul>
 </template>
 
 <script>
