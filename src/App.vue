@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Timer time_to_complete="30"/>
+  <Timer />
 </template>
 
 <script>
