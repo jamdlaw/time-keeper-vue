@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div class="container" style="max-width: 600px">
     <div>
       <span>{{timer.days}}</span>:<span>{{timer.hours}}</span>:<span>{{timer.minutes}}</span>:<span>{{timer.seconds}}</span>
     </div>
+     <input
+        type="text"
+        v-model="task"
+        placeholder="Enter task"
+        class="w-100 form-control"
+      />
     <p>{{timer.isRunning ? 'Running' : 'Not running'}}</p>
-    <button @click="timer.start()">Start</button>
-    <button @click="timer.pause()">Pause</button>
-    <button @click="timer.resume()">Resume</button>
-    <button @click="restartFive()">Restart</button>
+    <button class="btn btn-warning rounded-0 mr-1"  @click="timer.start()">Start</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="timer.pause()">Pause</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="timer.resume()">Resume</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="restartFive()">Restart</button>
   </div>
 </template>
 <script>
