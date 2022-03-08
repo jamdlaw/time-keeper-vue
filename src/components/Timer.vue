@@ -5,7 +5,6 @@
     </div>
      <input
         type="text"
-        v-model="task"
         placeholder="Enter task"
         class="w-100 form-control"
       />
@@ -13,7 +12,7 @@
     <button class="btn btn-warning rounded-0 mr-1"  @click="timer.start()">Start</button>
     <button class="btn btn-warning rounded-0 mr-1" @click="timer.pause()">Pause</button>
     <button class="btn btn-warning rounded-0 mr-1" @click="timer.resume()">Resume</button>
-    <button class="btn btn-warning rounded-0 mr-1" @click="restartFive()">Restart</button>
+    <button class="btn btn-warning rounded-0 mr-1" @click="timer.restart(0)">Stop</button>
   </div>
 </template>
 <script>
@@ -25,12 +24,7 @@ export default defineComponent({
     const time = new Date();
     time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
     const timer = useTimer(time);
-    const restartFive = () => {
-        // Restarts to 5 minutes timer
-        const time = new Date();
-        time.setSeconds(time.getSeconds() + 300);
-        timer.restart(time);
-    }
+    
     onMounted(() => {
       watchEffect(async () => {
         if(timer.isExpired.value) {
@@ -40,7 +34,7 @@ export default defineComponent({
     })
     return {
         timer,
-        restartFive,
+        
      };
   },
 });
