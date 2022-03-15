@@ -1,8 +1,5 @@
 <template>
   <div class="container" style="max-width: 600px">
-    <div>
-      <span>{{timer.days}}</span>:<span>{{timer.hours}}</span>:<span>{{timer.minutes}}</span>:<span>{{timer.seconds}}</span>
-    </div>
      <input
         type="text"
         placeholder="Enter task"
@@ -30,34 +27,20 @@
 </template>
 <script>
 import { defineComponent, watchEffect, onMounted, ref } from "vue";
-import { useTimer } from 'vue-timer-hook';
 export default defineComponent({
   name: "Home",
   setup() {
-    const time = new Date();
-    time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
-    const timer = useTimer(time);
     let tasks = [];
     const task = ref('');
     const stop = () => {
         tasks.push({  name: task,
                         duration: 0  
              });
-        //timer.restart(0);
     }
   
-    onMounted(() => {
-      watchEffect(async () => {
-        if(timer.isExpired.value) {
-            console.warn('IsExpired')
-        }
-      })
-    })
     return {
-        timer,
         task : '',
         tasks, 
-        stop
      };
   },
 });
